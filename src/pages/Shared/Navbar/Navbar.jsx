@@ -4,7 +4,12 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext);
+    const {user, logOut} = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+        .then()
+        .catch()
+    }
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
@@ -41,7 +46,7 @@ const Navbar = () => {
                     user ? 
                     <div>
                         {user.email}
-                        <button className="btn">LogOut</button>
+                        <button onClick={handleLogOut} className="btn">LogOut</button>
                     </div>
                     :
                     <Link to='/login'>
